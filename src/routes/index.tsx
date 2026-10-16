@@ -30,7 +30,7 @@ function Vid({ src, className = "" }: { src: string; className?: string }) {
     if (!el) return;
     const io = new IntersectionObserver(
       ([e]) => {
-        if (e.isIntersecting) {
+        if (e?.isIntersecting) {
           if (!el.src) el.src = src;
           el.play().catch(() => {});
         } else {
