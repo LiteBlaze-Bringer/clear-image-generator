@@ -193,7 +193,7 @@ function Index() {
           </h2>
           <div className="grid grid-cols-[1.2fr_1fr] gap-4">
             <div className="iconic-card aspect-[9/16] overflow-hidden rounded-card border border-border">
-              <Vid src={v1.url} />
+              <Vid src={v22.url} />
             </div>
             <div className="flex flex-col gap-4">
               <div className="iconic-card aspect-[4/3] overflow-hidden rounded-card border border-border">
@@ -201,6 +201,9 @@ function Index() {
               </div>
               <div className="iconic-card aspect-[4/3] overflow-hidden rounded-card border border-border">
                 <Vid src={v32.url} />
+              </div>
+              <div className="iconic-card aspect-[4/3] overflow-hidden rounded-card border border-border">
+                <Vid src={v1.url} />
               </div>
             </div>
           </div>
