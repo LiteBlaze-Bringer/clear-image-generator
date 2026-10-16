@@ -10,10 +10,10 @@ import v32 from "@/assets/v3-2.mp4.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Cinematic AI — Product Films Never Filmed" },
-      { name: "description", content: "A cinematic AI agency crafting product ads frame by frame — made to stop people mid-scroll." },
-      { property: "og:title", content: "Cinematic AI — Product Films Never Filmed" },
-      { property: "og:description", content: "Cinematic AI product advertisements for brands and product businesses." },
+      { title: "Cinematic — Product Films Never Filmed" },
+      { name: "description", content: "A cinematic agency crafting product ads frame by frame — made to stop people mid-scroll." },
+      { property: "og:title", content: "Cinematic — Product Films Never Filmed" },
+      { property: "og:description", content: "Cinematic product advertisements for brands and product businesses." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -112,10 +112,6 @@ function Index() {
           y: 40, opacity: 0, stagger: 0.08, duration: 0.9, ease: "power3.out",
           scrollTrigger: { trigger: ".cta", start: "top 65%" },
         });
-        gsap.from(".cta-btn", {
-          opacity: 0, duration: 0.6, delay: 0.3 + 0.08 * 5,
-          scrollTrigger: { trigger: ".cta", start: "top 65%" },
-        });
       }, root);
 
       cleanup = () => {
@@ -128,7 +124,6 @@ function Index() {
     return () => cleanup();
   }, []);
 
-  const scrollToCta = () => document.getElementById("start")?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <div ref={root} className="overflow-x-hidden bg-background text-foreground">
@@ -137,13 +132,7 @@ function Index() {
         ref={nav}
         className="invisible fixed inset-x-0 top-0 z-50 flex items-center justify-between border-b border-border bg-background/60 px-6 py-4 backdrop-blur-md md:px-10"
       >
-        <span className="font-display text-2xl tracking-[0.04em]">CINEMATIC AI</span>
-        <button
-          onClick={scrollToCta}
-          className="rounded-pill border border-foreground/20 px-5 py-2 text-sm text-foreground"
-        >
-          Start a Project
-        </button>
+        <span className="font-display text-2xl tracking-[0.04em]">CINEMATIC</span>
       </nav>
 
       {/* Hero */}
@@ -161,7 +150,7 @@ function Index() {
         </div>
         <div className="relative z-10 flex flex-col items-center">
           <span className="hero-eyebrow mb-8 border border-border px-3.5 py-1 text-[10px] uppercase tracking-[0.22em]">
-            [ Cinematic AI Agency ]
+            [ Cinematic Agency ]
           </span>
           <h1 className="display">
             <span className="hero-line block">CINEMA</span>
@@ -181,7 +170,7 @@ function Index() {
       <section className="never relative min-h-[100dvh] overflow-hidden">
         <div className="absolute inset-0 grid grid-cols-2 md:grid-cols-4">
           {[v12.url, v3.url, v22.url, v32.url].map((s, i) => (
-            <div key={i} className={`vid-hover relative overflow-hidden border-r border-border ${i > 1 ? "hidden md:block" : ""}`}>
+            <div key={i} className={`relative overflow-hidden border-r border-border ${i > 1 ? "hidden md:block" : ""}`}>
               <Vid src={s} />
             </div>
           ))}
@@ -204,11 +193,11 @@ function Index() {
           </h2>
           <div className="grid grid-cols-[1.2fr_1fr] gap-4">
             <div className="iconic-card aspect-[9/16] overflow-hidden rounded-card border border-border">
-              <Vid src={v3.url} />
+              <Vid src={v1.url} />
             </div>
             <div className="flex flex-col gap-4">
               <div className="iconic-card aspect-[4/3] overflow-hidden rounded-card border border-border">
-                <Vid src={v1.url} />
+                <Vid src={v3.url} />
               </div>
               <div className="iconic-card aspect-[4/3] overflow-hidden rounded-card border border-border">
                 <Vid src={v32.url} />
@@ -234,7 +223,7 @@ function Index() {
               CINEMA
             </h2>
             <p className="mt-8 max-w-md text-muted-foreground">
-              Fragrance and beauty spots, luxury food, fashion and goods — cinematically shot and AI-built.
+              Fragrance and beauty spots, luxury food, fashion and goods — cinematically shot and crafted.
             </p>
           </div>
           <div className="grid grid-cols-3 gap-2">
@@ -279,12 +268,6 @@ function Index() {
           something <em>unskippable.</em>
         </h2>
         <p className="mt-6 text-base text-ink-soft">Tell us what you sell and show the world.</p>
-        <a
-          href="mailto:hello@cinematic.ai?subject=Create%20my%20video"
-          className="cta-btn btn-cta mt-10 inline-block rounded-pill bg-accent-foreground px-9 py-3.5 text-accent"
-        >
-          Create my video
-        </a>
       </section>
     </div>
   );
