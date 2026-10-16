@@ -1,11 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
-import v1 from "@/assets/v1.mp4.asset.json";
-import v2 from "@/assets/v2.mp4.asset.json";
-import v3 from "@/assets/v3.mp4.asset.json";
-import v12 from "@/assets/v1-2.mp4.asset.json";
-import v22 from "@/assets/v2-2.mp4.asset.json";
-import v32 from "@/assets/v3-2.mp4.asset.json";
+
+// Self-hosted, compressed clips in public/videos — work on any host (Lovable, Vercel, Netlify).
+const v1 = { url: "/videos/v1.mp4" };
+const v2 = { url: "/videos/v2.mp4" };
+const v3 = { url: "/videos/v3.mp4" };
+const v12 = { url: "/videos/v1-2.mp4" };
+const v22 = { url: "/videos/v2-2.mp4" };
+const v32 = { url: "/videos/v3-2.mp4" };
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -22,14 +24,31 @@ export const Route = createFileRoute("/")({
 });
 
 function Vid({ src, className = "" }: { src: string; className?: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e?.isIntersecting) {
+          if (!el.src) el.src = src;
+          el.play().catch(() => {});
+        } else {
+          el.pause();
+        }
+      },
+      { rootMargin: "300px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [src]);
   return (
     <video
-      src={src}
-      autoPlay
+      ref={ref}
       muted
       loop
       playsInline
-      preload="metadata"
+      preload="none"
       className={`h-full w-full object-cover ${className}`}
     />
   );
